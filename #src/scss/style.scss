@@ -1,4 +1,6 @@
 @import"normalize";
+@import "fonts";
+@import "slick-theme";
 
 @mixin font($font_name, $file_name, $weight, $style) {
 
@@ -12,11 +14,9 @@
 	}
 }
 
-@import "fonts";
-
-
-
-
+.header__burger{
+	display: none;
+}
 
 body {
 	font-size: 30px;
@@ -49,8 +49,24 @@ header {
 }
 
 .container {
-	width: 1130px;
+	max-width: 1130px;
 	margin: 0 auto;
+	padding: 0 10px;
+	position: relative;
+
+	&::before {
+		content: url(../img/flower__top.png);
+		position: absolute;
+		right: -50px;
+		top: 1px;
+	}
+
+	&::after {
+		content: url(../img/flower__bottom.png);
+		position: absolute;
+		left: -196px;
+		bottom: -36px;
+	}
 
 }
 
@@ -62,6 +78,7 @@ ul {
 	display: flex;
 	flex-direction: column;
 	max-width: 230px;
+	z-index: 150;
 
 	p {
 		font-family: 'HelveticaNeueCyr-Thin';
@@ -73,9 +90,35 @@ ul {
 	}
 }
 
+.slick-dots {
+	bottom: -200px;
+	right: 230px;
+}
+
+.slick-dots li.slick-active button:before {
+	color: #000;
+	opacity: .75;
+	content: url(../img/dots_active.png);
+}
+
+.slick-dots li button:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: url(../img/dots.png);
+	width: 20px;
+	height: 20px;
+	font-family: slick;
+	font-size: 6px;
+	color: #000;
+	opacity: 1;
+
+}
+
 .header__body {
 	display: flex;
-
+	justify-content: space-between;
+	align-items: center;
 	.header__menu {
 		padding-top: 15px;
 		position: relative;
@@ -168,6 +211,7 @@ ul {
 		}
 
 		.header__list {
+			z-index: 2;
 			.header__link-servises {
 
 				&::before {
@@ -239,7 +283,7 @@ ul {
 	font-weight: 500;
 	justify-content: center;
 	line-height: 15px;
-
+	margin-right: 20px;
 	span {
 		font-size: 18px;
 	}
@@ -248,7 +292,8 @@ ul {
 .flower {
 	background-image: url(../img/big-flower.png);
 	margin-top: 200px;
-	width: 710px;
+	max-width: 710px;
+	width: 100%;
 	height: 596px;
 	position: relative;
 
@@ -299,20 +344,23 @@ ul {
 .slider__wrapper {
 	position: relative;
 	margin-left: 160px;
+	padding-top: -10px;
+
 	&::before {
 		content: url(../img/Shape_57_copy.png);
 		position: absolute;
 		left: -48px;
-		top: 0;
+		top: 13px;
 	}
 
 	&::after {
 		content: url(../img//Shape_57.png);
 		position: absolute;
-		top: 7px;
+		top: 22px;
 		right: 147px;
 	}
 }
+
 
 // footer
 .footer__title {
@@ -325,16 +373,19 @@ ul {
 }
 
 .footer__text {
-
+	max-width: 1060px;
+	height: 92px;
 	color: #363636;
 	font-family: 'HelveticaNeueCyr-Thin';
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 26px;
-
+	text-align: center;
 	letter-spacing: 0.7px;
 }
 
 .footer {
 	margin-top: -158px;
 }
+
+@import"media";
